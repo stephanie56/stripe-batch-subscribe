@@ -20,7 +20,7 @@ const processData = async (row) => {
     const customerId = row['Customer ID'];
     const priceId = row['Plan'];
 
-    // Subscribe product to the current customer
+    // Subscribe customer to the product
     const subscription = await stripe.subscriptions.create({
       customer: customerId,
       items: [{ price: priceId }],
