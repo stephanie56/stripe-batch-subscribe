@@ -1,0 +1,17 @@
+{
+  "name": "stripe-batch-subscribe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "async-sema": "^3.1.0",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^8.2.0",
+    "stripe": "^8.136.0"
+  }
+}

@@ -1,0 +1,3 @@
+id,Customer ID,Customer Description,Customer Email,Plan,Quantity,Interval,Amount,Status,Created (UTC),Start (UTC),Current Period Start (UTC),Current Period End (UTC),Trial Start (UTC),Trial End (UTC),Application Fee Percent,Coupon,Tax Percent,Canceled At (UTC),Cancel At Period End,Ended At (UTC),Exclusive Tax Rate,Inclusive Tax Rate
+sub_IxtLckKYPkh8Kk,cus_IxtKeTF5URlYWm,Customer Test,stephanie.zeng+test@rangle.io,price_1ILxNpE9g5n9IHQB0NujQ0b1,1,month,20000,active,2021-02-17 21:27,2021-02-17 21:27,2021-02-17 21:27,2021-03-17 21:27,,,,,,,false,,,
+sub_IxtKgyqHaQTPaF,cus_IxtKeTF5URlYWm,Customer Test,stephanie.zeng+test@rangle.io,price_1ILxNNE9g5n9IHQBjINcK0U8,1,month,10000,active,2021-02-17 21:27,2021-02-17 21:27,2021-02-17 21:27,2021-03-17 21:27,,,,,,,false,,,
