@@ -1,0 +1,5 @@
+legacy_subscription_id,price,recurring,product_name
+basic_monthly,49,month,Individual Basic Plan
+basic_annual,233,year,Individual Unlimited Access Plan
+team_monthly,150,month,Enterprise Monthly Plan
+team_annual,2300,year,Enterprise Unlimited Plan

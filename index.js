@@ -13,30 +13,49 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const MAX_REQUESTS_PER_SECOND = 10;
 const limit = RateLimit(MAX_REQUESTS_PER_SECOND);
 
-const processData = async (row) => {
-  try {
-    await limit();
-    // Take customerId and priceId from the CSV file
-    const customerId = row['Customer ID'];
-    const priceId = row['Plan'];
+let plans = new Map();
 
-    // Subscribe customer to the product
-    const subscription = await stripe.subscriptions.create({
-      customer: customerId,
-      items: [{ price: priceId }],
-      expand: ['latest_invoice.payment_intent'],
-    });
+// Read from mock DB
+fs.createReadStream('mockPlanDB.csv')
+  .pipe(csv())
+  .on('data', async (row) => {
+    console.log(row)
+    const { price_id, legacy_subscription_id } = row;
+    plans.set(legacy_subscription_id, price_id);
+    console.log('plans', plans);
+  });
 
-    // Store the price.id, subscription.id and the customer.id in database
-    saveToMockDB(customerId, priceId, subscription.id);
-  } catch (error) {
-    logErrors(row, error);
-    // TODO: handle retry logic
-  }
-}
 
 // Batch process data from the source CSV
-fs.createReadStream('subscriptions.csv')
-  .pipe(csv())
-  .on('data', processData);
+// fs.createReadStream('mockCustomerDB.csv')
+//   .pipe(csv())
+//   .on('data', async (row) => {
+//     try {
+//       await limit();
+//       // Take customerId and priceId from the CSV file
+//       const customerId = row['Customer ID'];
+//       const priceId = row['Legacy Subscription ID'];
+
+//       // Subscribe customer to the product
+//       const subscription = await stripe.subscriptions.create({
+//         customer: customerId,
+//         items: [{ price: priceId }],
+//         expand: ['latest_invoice.payment_intent'],
+//       });
+
+//       // Store the price.id, subscription.id and the customer.id in database
+//       // saveToMockDB(customerId, priceId, subscription.id);
+//       const mockDBHeader = [
+//         { id: 'customerId', title: 'Customer Name' },
+//         { id: 'priceId', title: 'Price ID' },
+//         { id: 'subscriptionId', title: 'Subscription ID' },
+//       ];
+//       const mockDBRecords = [{ customerId, priceId, subscriptionId }];
+//       saveToMockDB('mockDB.csv', { mockDBHeader, mockDBRecords });
+
+//     } catch (error) {
+//       logErrors(row, error);
+//       // TODO: handle retry logic
+//     }
+//   });
 

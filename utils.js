@@ -11,19 +11,22 @@ const logErrors = (row, error) => {
 }
 
 // Add data to the mockDB CSV file
-const saveToMockDB = async (customerId, priceId, subscriptionId) => {
+const saveToMockDB = async (filePath, mockDBConfig) => {
+  const { header, records } = mockDBConfig;
+  console.log('gggg', header, records, mockDBConfig)
   try {
     const csvWriter = createCsvWriter({
-      path: 'mockDB.csv',
-      header: [
-        { id: 'customerId', title: 'Customer Name' },
-        { id: 'priceId', title: 'Price ID' },
-        { id: 'subscriptionId', title: 'Subscription ID' },
-      ],
+      path: filePath,
+      header,
+      // header: [
+      //   { id: 'customerId', title: 'Customer Name' },
+      //   { id: 'priceId', title: 'Price ID' },
+      //   { id: 'subscriptionId', title: 'Subscription ID' },
+      // ],
       append: true,
     });
 
-    const records = [{ customerId, priceId, subscriptionId }];
+    // const records = [{ customerId, priceId, subscriptionId }];
 
     await csvWriter.writeRecords(records);
   } catch (error) {
