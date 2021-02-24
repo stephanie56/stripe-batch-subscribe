@@ -9,9 +9,9 @@ const csv = require('csv-parser');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const { RateLimit } = require('async-sema');
-const { MAX_REQUESTS_PER_SECOND, MAX_COUPON_DURATION_IN_MONTH } = require('./constants');
+const { MAX_REQUESTS_PER_SECOND, MAX_COUPON_DURATION_IN_MONTH } = require('./utils/constants');
 const limit = RateLimit(MAX_REQUESTS_PER_SECOND);
-const { createSubscriptionPhases } = require('./utils');
+const { createSubscriptionPhases } = require('./utils/helpers');
 
 const sourceCSV = process.argv.slice(2);
 
@@ -36,6 +36,8 @@ fs.createReadStream(`./mock-data/${sourceCSV}`)
         end_behavior: 'release', // subscription stays active while the Schedule itself ends
         phases: createSubscriptionPhases(coupon_id, plan.id, coupon_duration_in_months, MAX_COUPON_DURATION_IN_MONTH),
       });
+
+      console.log(`Created Stripe subscription schedule ${schedule.id} success!`)
 
     } catch (error) {
       console.log(error);
