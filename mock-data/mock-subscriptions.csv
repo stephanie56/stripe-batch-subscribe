@@ -1,0 +1,6 @@
+stripe_customer_id,email,name,plan_id,coupon_id,coupon_duration_in_months,next_billing_date
+cus_J0QSZgoXqvCfYC,fannable0@sphinn.com,Filbert Annable,personal_monthly,40_percent_off,2,2021-02-01
+cus_J0QS2cOyv3oqiH,spuckinghorne3@csmonitor.com,Shea Puckinghorne,team_monthly,free_trial,1,2021-02-02
+cus_J0QS72yNXtu0jr,kwoodfield1@umich.edu,Keelia Woodfield,personal_annual,,,2022-02-13
+cus_J0QSoDfDOFx8cM,thandlin2@yandex.ru,Tiffie Handlin,team_annual,,,2021-02-26
+cus_J0QSNcWB7iTyMm,rewdale4@umich.edu,Roger Ewdale,personal_monthly,20_amount_off,,2021-02-24

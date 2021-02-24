@@ -1,0 +1,4 @@
+coupon_id,coupon_name,percent_off,amount_off
+40_percent_off,40 Percents Off,40,
+20_amount_off,20 Dollars Off,,20
+free_trial,Free Trial,100,

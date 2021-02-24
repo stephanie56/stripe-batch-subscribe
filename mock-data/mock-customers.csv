@@ -1,51 +1,6 @@
-first_name,last_name,email,legacy_subscription_id
-Elisabet,Keohane,ekeohane0@independent.co.uk,team_annual
-Gertrud,Lindhe,glindhe1@mapy.cz,basic_monthly
-Deirdre,Eberz,deberz2@cnet.com,team_annual
-Yetta,King,yking3@free.fr,basic_annual
-Rudy,Huntley,rhuntley4@vinaora.com,basic_annual
-Thain,Kilkenny,tkilkenny5@globo.com,team_monthly
-Zacherie,Piddocke,zpiddocke6@cnn.com,team_annual
-Hetti,Madelin,hmadelin7@topsy.com,team_monthly
-Sidonia,Farrants,sfarrants8@ibm.com,team_monthly
-Miguel,Eyam,meyam9@japanpost.jp,team_annual
-Aimee,Cranefield,acranefielda@google.com.br,basic_monthly
-Joy,Oliphand,joliphandb@sciencedirect.com,basic_annual
-Jocelyn,Piotrowski,jpiotrowskic@redcross.org,basic_monthly
-Nona,Barnsley,nbarnsleyd@theguardian.com,team_monthly
-Zacharias,Bysshe,zbysshee@arstechnica.com,basic_annual
-Jedediah,Grinnikov,jgrinnikovf@state.gov,team_annual
-Sharline,Ziemecki,sziemeckig@europa.eu,team_monthly
-Rebecka,Feechan,rfeechanh@mayoclinic.com,team_monthly
-Ossie,Mustard,omustardi@plala.or.jp,team_monthly
-Orelia,McDuffie,omcduffiej@quantcast.com,basic_monthly
-Cecilio,Bourdon,cbourdonk@virginia.edu,basic_monthly
-Dodie,Crielly,dcriellyl@techcrunch.com,team_monthly
-Benedicto,Heinrich,bheinrichm@hp.com,basic_monthly
-Archibald,Netting,anettingn@goodreads.com,team_monthly
-Matti,Ivakhnov,mivakhnovo@nbcnews.com,team_annual
-Martyn,Garrand,mgarrandp@bizjournals.com,team_annual
-Lin,Kenwin,lkenwinq@marketwatch.com,team_annual
-Lydon,Yeell,lyeellr@aboutads.info,team_monthly
-Garland,Laxson,glaxsons@usgs.gov,team_monthly
-Shantee,Bartolomeotti,sbartolomeottit@stanford.edu,basic_monthly
-Gerrilee,Bower,gboweru@illinois.edu,basic_annual
-Jabez,Ferneley,jferneleyv@si.edu,team_annual
-Meier,MacAne,mmacanew@gravatar.com,basic_monthly
-Modestine,Heinsius,mheinsiusx@technorati.com,basic_monthly
-Gherardo,Weeke,gweekey@parallels.com,team_annual
-Sarah,Gadie,sgadiez@boston.com,basic_monthly
-Mari,Edworthye,medworthye10@godaddy.com,basic_annual
-Rodrigo,Hebborne,rhebborne11@samsung.com,team_monthly
-Mohandas,Shemmans,mshemmans12@homestead.com,basic_annual
-Livy,Renneke,lrenneke13@nature.com,basic_annual
-Yorgo,Cleverley,ycleverley14@taobao.com,basic_annual
-Max,Standall,mstandall15@shutterfly.com,team_annual
-Krishna,Giddens,kgiddens16@youtube.com,basic_annual
-Tandi,Tappor,ttappor17@flavors.me,basic_annual
-Bessie,Edsall,bedsall18@eepurl.com,team_annual
-Bruce,Braznell,bbraznell19@goodreads.com,basic_monthly
-Jermayne,Ayshford,jayshford1a@123-reg.co.uk,basic_annual
-Glendon,Jirick,gjirick1b@sakura.ne.jp,team_annual
-Peggie,Sharpley,psharpley1c@t.co,team_monthly
-Gardener,Galsworthy,ggalsworthy1d@alexa.com,basic_annual
+id,name,email
+1,Filbert Annable,fannable0@sphinn.com
+2,Keelia Woodfield,kwoodfield1@umich.edu
+3,Tiffie Handlin,thandlin2@yandex.ru
+4,Shea Puckinghorne,spuckinghorne3@csmonitor.com
+5,Roger Ewdale,rewdale4@umich.edu

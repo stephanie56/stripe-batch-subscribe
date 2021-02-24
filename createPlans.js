@@ -1,52 +1,38 @@
+/*
+** Create product plans (prices) on Stripe from the supplied CSV
+** Expect CSV file headers [plan_id, plan_name, price, interval]
+*/
 require('dotenv').config();
 
 const fs = require('fs');
 const csv = require('csv-parser');
-const { saveToMockDB } = require("./utils");
-
-const { RateLimit } = require('async-sema');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-// Set the rate limit to 10 requests per second
-// Note that Stripe allows up to 100 read/write operations per second in live mode
-// and 25 operations per second for each in test mode. Take 
-const MAX_REQUESTS_PER_SECOND = 10;
+const { RateLimit } = require('async-sema');
+const { MAX_REQUESTS_PER_SECOND } = require('./constants');
 const limit = RateLimit(MAX_REQUESTS_PER_SECOND);
 
-const processData = async (row) => {
-  try {
-    await limit();
-    const { legacy_subscription_id, price, recurring, product_name } = row;
-    const plan = await stripe.prices.create({
-      unit_amount: parseInt(price, 10) * 100,
-      currency: 'usd',
-      recurring: { interval: recurring },
-      product_data: {
-        name: product_name,
-        active: true,
-      },
-      metadata: { legacy_subscription_id }
-    });
+const sourceCSV = process.argv.slice(2);
 
-    const priceId = plan.id;
-
-    const header = [
-      { id: 'priceId', title: 'Plan ID' },
-      { id: 'legacySubscriptionId', title: 'Legacy Subscription ID' },
-    ];
-    const records = [{
-      priceId,
-      legacySubscriptionId: legacy_subscription_id
-    }];
-
-    saveToMockDB('mockPlanDB.csv', { header, records });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-// Batch process data from the source CSV
-fs.createReadStream('./mock-data/mock-plans.csv')
+fs.createReadStream(`./mock-data/${sourceCSV}`)
   .pipe(csv())
-  .on('data', processData);
+  .on('data', async (row) => {
+    try {
+      await limit();
+      const { plan_id, plan_name, price, interval } = row;
+      const plan = await stripe.prices.create({
+        unit_amount: parseFloat(price, 10) * 100,
+        currency: 'usd',
+        recurring: { interval },
+        product_data: {
+          name: plan_name,
+          active: true,
+        },
+        lookup_key: plan_id
+      });
+      console.log(`Created Stripe plan ${plan.id} success!`)
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
