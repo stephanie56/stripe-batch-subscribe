@@ -9,9 +9,9 @@ const csv = require('csv-parser');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const { RateLimit } = require('async-sema');
-const { MAX_REQUESTS_PER_SECOND, MAX_COUPON_DURATION_IN_MONTH } = require('./constants');
+const { MAX_REQUESTS_PER_SECOND, MAX_COUPON_DURATION_IN_MONTH } = require('./utils/constants');
 const limit = RateLimit(MAX_REQUESTS_PER_SECOND);
-const { createSubscriptionPhases } = require('./utils');
+const { createSubscriptionPhases } = require('./utils/helpers');
 
 const sourceCSV = process.argv.slice(2);
 
