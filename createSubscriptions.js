@@ -37,6 +37,8 @@ fs.createReadStream(`./mock-data/${sourceCSV}`)
         phases: createSubscriptionPhases(coupon_id, plan.id, coupon_duration_in_months, MAX_COUPON_DURATION_IN_MONTH),
       });
 
+      console.log(`Created Stripe subscription schedule ${schedule.id} success!`)
+
     } catch (error) {
       console.log(error);
     }
