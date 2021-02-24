@@ -1,35 +1,39 @@
-const createCsvWriter = require("csv-writer").createObjectCsvWriter;
-
-// Write errors to the log file
-const logErrors = (row, error) => {
-  const customerId = row['Customer ID'];
-  try {
-    fs.appendFileSync('errorLog.txt', `${customerId}: ${error.code}\n`);
-  } catch (error) {
-    throw error;
+const createSubscriptionPhases = (couponId, planId, couponDuration, maxCouponDuration) => {
+  const noCouponDuration = maxCouponDuration - couponDuration;
+  // If there is no discount applies to this subscription, return default phase set up
+  if (!couponId || !couponDuration) {
+    return [{
+      items: [{ price: planId, quantity: 1 }],
+      iterations: 12,
+    }];
+  } else if (noCouponDuration <= 0) {
+    // If coupon duration is longer than the maximum coupon duration,
+    // apply discount for the max coupon duration, and ensure the subscription
+    // stays active with no discount after the max coupon duration 
+    return [
+      {
+        items: [{ price: planId, quantity: 1 }],
+        iterations: maxCouponDuration,
+        coupon: couponId
+      },
+      {
+        items: [{ price: planId, quantity: 1 }],
+        iterations: 1,
+      }
+    ];
+  } else {
+    return [
+      {
+        items: [{ price: planId, quantity: 1 }],
+        iterations: couponDuration,
+        coupon: couponId
+      },
+      {
+        items: [{ price: planId, quantity: 1 }],
+        iterations: noCouponDuration,
+      }
+    ];
   }
 }
 
-// Add data to the mockDB CSV file
-const saveToMockDB = async (customerId, priceId, subscriptionId) => {
-  try {
-    const csvWriter = createCsvWriter({
-      path: 'mockDB.csv',
-      header: [
-        { id: 'customerId', title: 'Customer Name' },
-        { id: 'priceId', title: 'Price ID' },
-        { id: 'subscriptionId', title: 'Subscription ID' },
-      ],
-      append: true,
-    });
-
-    const records = [{ customerId, priceId, subscriptionId }];
-
-    await csvWriter.writeRecords(records);
-  } catch (error) {
-    throw error;
-  }
-}
-
-
-module.exports = { logErrors, saveToMockDB }
+module.exports = { createSubscriptionPhases }
