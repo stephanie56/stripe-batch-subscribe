@@ -16,11 +16,11 @@ Stripe imports customers and their payment methods as part of the migration proc
 
 **Sample source CSV file**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c98263c2-7116-4d3f-a218-c56631caab03/Screen_Shot_2021-02-24_at_2.39.49_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c98263c2-7116-4d3f-a218-c56631caab03/Screen_Shot_2021-02-24_at_2.39.49_PM.png)
+![sample mock customer csv](docs/mock-customers-csv-preview.png)
 
 **Test Result**
 
-![create-customers-test-result.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/09d2cd81-875e-41a0-adfd-8378e36b26b3/Screen_Shot_2021-02-24_at_10.50.20_AM.png)
+![create customers test result](docs/create-customers-test-result.png)
 
 ### Step 2. Create Plans
 
@@ -37,11 +37,11 @@ For the next step, we run the `createPlans.js` script to recreate plans that mat
 
 **Sample source CSV file**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b32fa37e-1296-46d0-9966-051c642c84b2/Screen_Shot_2021-02-24_at_2.42.28_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b32fa37e-1296-46d0-9966-051c642c84b2/Screen_Shot_2021-02-24_at_2.42.28_PM.png)
+![sample mock plans csv](docs/mock-plans-csv-preview.png)
 
 **Test Result**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/38430f0a-f293-4e5d-a8e1-2530a0ca0b4e/Screen_Shot_2021-02-24_at_9.06.13_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/38430f0a-f293-4e5d-a8e1-2530a0ca0b4e/Screen_Shot_2021-02-24_at_9.06.13_AM.png)
+![create plans test result](docs/create-plans-test-result.png)
 
 ### Step 3. Create Coupons
 
@@ -58,11 +58,11 @@ We also need to create coupons to allow applying flexible discounts to subscript
 
 **Sample source CSV file**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33cb60ac-426e-4a70-9cca-525ee91302cd/Screen_Shot_2021-02-24_at_2.52.11_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/33cb60ac-426e-4a70-9cca-525ee91302cd/Screen_Shot_2021-02-24_at_2.52.11_PM.png)
+![sample mock coupons csv](docs/mock-coupons-csv-preview.png)
 
 **Test Result**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a7e57000-2c09-425b-988c-a53818af9176/Screen_Shot_2021-02-24_at_8.42.03_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a7e57000-2c09-425b-988c-a53818af9176/Screen_Shot_2021-02-24_at_8.42.03_AM.png)
+![create coupons test result](docs/create-coupons-test-result.png)
 
 ### Step 4. Create subscriptions
 
@@ -80,4 +80,12 @@ This script also supports flexible discount rates. For example, a user may have 
 
   2. Run `node createSubscriptions.js <YOUR_MOCK_SUBSCRIPTION_FILE_NAME>` to recreate users' plans in the system.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a3b6ab7-a29f-4f6c-81e8-1b6e516c05e1/Screen_Shot_2021-02-24_at_2.59.42_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8a3b6ab7-a29f-4f6c-81e8-1b6e516c05e1/Screen_Shot_2021-02-24_at_2.59.42_PM.png)
+![sample mock subscriptions csv](docs/mock-subscriptions-csv-preview.png)
+
+**Test Result**
+
+The script creates a subscription for Filbert that starts on March 1 with a discount of 40% off for 2 months.
+![create subscriptions test result](docs/create-subscriptions-test-result.png)
+
+This screenshot shows the 40% off coupon will be removed on May 1, 2021
+![create scheduled coupon test result](docs/create-scheduled-coupon.png)
