@@ -6,6 +6,12 @@ Stripe's migration process imports customers and their payment methods but doesn
 - allow delayed starts
 - the ability to apply different discounts to subscriptions
 
+## Get Started
+
+1. Add your Stripe secret key in the `.env.example` and run `cp .env.example .env`
+2. Run `npm install` to download dependencies
+3. Move your source CSV files to the `mock-data` folder
+
 ### Step 1. Create Customers
 
 Stripe imports customers and their payment methods as part of the migration process. Therefore, we don't need to create customers to automate subscriptions. However, we still need to run `createCustomers.js` as the first step to create mock customers on Stripe for demo purposes.
@@ -54,7 +60,7 @@ We also need to create coupons to allow applying flexible discounts to subscript
 - `percent_off`: the discount the coupon will apply
 - `amount_off`: the amount to subtract from an invoice total
 
-  2. Run `node createCoupons.js <YOUR_MOCK_COUPONS_FILE_NAME>` to create Stripe prices.
+2. Run `node createCoupons.js <YOUR_MOCK_COUPONS_FILE_NAME>` to create Stripe prices.
 
 **Sample source CSV file**
 
@@ -78,7 +84,7 @@ This script also supports flexible discount rates. For example, a user may have 
 - `coupon_duration_in_months`: how long the discount will last in months
 - `next_billing_date`: user's next billing date
 
-  2. Run `node createSubscriptions.js <YOUR_MOCK_SUBSCRIPTION_FILE_NAME>` to recreate users' plans in the system.
+2. Run `node createSubscriptions.js <YOUR_MOCK_SUBSCRIPTION_FILE_NAME>` to recreate users' plans in the system.
 
 ![sample mock subscriptions csv](docs/mock-subscriptions-csv-preview.png)
 
